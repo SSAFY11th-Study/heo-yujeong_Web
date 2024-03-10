@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div p {
+      color: blue;
+      margin-left: 50px;
+    }
+
+    div>p {
+      color: crimson;
+      margin-left: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <p>자식</p>
+    <span>
+      <p>손자</p>
+    </span>
+    <p>자식</p>
+  </div>
+
+  <!-- 
+    - 자손 결합자와 자식 결합자의 차이
+      space로 작성하는 자손 결합자는 하위 레벨에 상관 없이 안의 요소를 모두 선택한다.
+      해당 문제에서는 div아래 있는 모든 p태그가 해당 된다.
+      >로 작성하는 자식 결합자는 한 단계 아래의 요소들만 선택된다.
+      해당 문제에서는 div의 한 단계 아래 p태그가 있는 경우에만 해당 된다.
+   -->
+</body>
+
+</html>
