@@ -1,0 +1,35 @@
+.container {
+  width: 500px;
+  height: 300px;
+  background-color: grey;
+  display: flex;
+  border: 1px black solid;
+  margin: 10px;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px black solid;
+  background-color: rgb(201, 170, 201);
+}
+.con1 {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.con2 {
+  justify-content: space-between;
+  align-items: center;
+}
+.con3 {
+  justify-content: space-around;
+  align-items: center;
+}
+.con4 {
+  justify-content: space-between;
+}
+.box-under {
+  align-self: flex-end;
+}
+.box-left {
+  margin-right: 200px;
+}
