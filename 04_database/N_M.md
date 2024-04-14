@@ -1,0 +1,34 @@
+### - N:M or M:N
+- 한 테이블의 0개 이상의 레코드가 다른 테이블의 0개 이상의 레코드와 관련된 경우
+- `ManyToManyField(참조하는 모델 클래스)`
+- 두 모델 중 어느 곳에 작성해도 상관 X
+- 단, 참조, 역참조 관계만 잘 기억할 것
+### - through 옵션
+- 중개 모델에 추가 데이터 필요할 때 추가
+- `through = "중개테이블명"`
+### - ManyToManyField
+- 대표 인자
+  - `related_name` : 역참조시 사용하는 manager name 변경
+  - `symmetrical` : 대칭 유무 / 기본은 True / 동일 모델 가리킬 때만 사용
+  - `through` : 사용하고자 하는 중개모델 지정
+- 대표 메서드
+  - `add()` : 지정된 객체를 관련 객체 집합에 추가
+  - `remove()` : 관련 객체 집합에서 지정된 모델 객체를 제거
+- 역참조 매니저 충돌
+  - 보통 ManyToManyField에 related_name 작성
+### - exists()
+- QuerySet에 결과가 포함되어 있으면 True, 아니면 False 반환
+- 큰 QuerySet에 있는 특정 객체 검색에 유용
+- ex) `if article.like_users.filter(pk=request.user.pk).exists():`
+### Fixtures
+- Django가 데이터베이스로 가져오는 방법을 알고있는 데이터 모음
+- 사용 목적 : 초기 데이터 제공
+- dumpdata : 생성(데이터 추출)
+- loaddata : 로드(데이터 입력)
+  - encoding codec 에러 발생 시 `-Xutf8` 옵션 추가
+- 기본 경로 : app_name/fixtures/
+### Improve query
+- 쿼리 개선
+- annotate : SQL의 Group by
+- select_related : SQL의 INNER JOIN => 1:1 or 1:N에서 사용
+- prefetch_related : python을 사용한 JOIN => M:N 또는 N:1 역참조 관계에서 사용
