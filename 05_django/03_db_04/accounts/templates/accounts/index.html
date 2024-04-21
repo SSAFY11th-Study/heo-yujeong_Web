@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>직원 전체 목록</h1>
+  <ul>
+    {% for one in users %}
+      <li>이름 : {{one.username}}</li>
+      <li>admin 여부 : {{one.is_superuser}}</li>
+      <li>staff 여부 : {{one.is_staff}}</li>
+      {% if user == one %}
+        <a href="{% url "accounts:update" %}">회원 정보 수정</a>
+      {% endif %}
+      {% if user.is_superuser %}
+        <a href="{% url "accounts:superuser_update" one.pk %}">관리자 여부 수정</a>
+        <form action="{% url "accounts:delete" one.pk %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="회원 삭제">
+        </form>
+      {% endif %}
+      <hr>
+    {% endfor %}
+  </ul>
+{% endblock content %}
