@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{author.nickname}}의 소설 목록</h1>
+  <form action="{% url "libraries:subscribe" author.pk %}" method="post">
+    {% csrf_token %}
+    {% if request.user in author.subscribed_users.all %}
+      <input type="submit" value="구독 취소">
+    {% else %}
+      <input type="submit" value="구독">
+    {% endif %}
+  </form>
+  <ul>
+    {% for book in author.book_set.all %}
+      <li>{{book.title}}</li>
+      <li>{{book.genre}}</li>
+      <hr>
+    {% endfor %}
+  </ul>
+{% endblock content %}
